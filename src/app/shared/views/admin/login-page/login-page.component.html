@@ -1,0 +1,47 @@
+<form class="card form" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Login to admin panel</h2>
+
+  <div class="form-control form__control">
+    <label>
+      Email:
+      <input formControlName="email" type="email" />
+    </label>
+    <div
+      class="validation"
+      *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+    >
+      <small *ngIf="form.get('email')?.errors?.required"
+        >Enter your email</small
+      >
+      <small *ngIf="form.get('email')?.errors?.email"
+        >Email is not correct</small
+      >
+    </div>
+    <!-- /.validation -->
+  </div>
+  <!-- /.form-control form__control -->
+
+  <div class="form-control form__control">
+    <label>
+      Password:
+      <input formControlName="password" type="email" />
+    </label>
+    <div
+      class="validation"
+      *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+    >
+      <small>Error</small>
+    </div>
+    <!-- /.validation -->
+  </div>
+  <!-- /.form-control form__control -->
+
+  <button
+    type="submit"
+    class="btn btn-primary form__button"
+    [disabled]="form.invalid"
+  >
+    Login
+  </button>
+</form>
+<!-- /.card form -->

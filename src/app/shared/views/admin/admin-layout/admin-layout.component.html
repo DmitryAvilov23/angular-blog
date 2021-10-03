@@ -2,7 +2,10 @@
   <nav class="admin-navigation navbar bg-primary">
     <h1><a routerLink="/">Angular Admin</a></h1>
 
-    <ul class="admin-navigation__items-group">
+    <ul
+      class="admin-navigation__items-group"
+      *ngIf="_authService.isUserAuthenticated()"
+    >
       <li class="admin-navigation__item" routerLinkActive="active">
         <a
           [routerLink]="['/admin', 'dashboard']"
@@ -20,7 +23,9 @@
       </li>
       <!-- /.admin-navigation__item -->
       <li class="admin-navigation__item" routerLinkActive="active">
-        <a (click)="logout($event)" class="admin-navigation__item-link">Exit</a>
+        <a (click)="signOut($event)" class="admin-navigation__item-link"
+          >Exit</a
+        >
       </li>
       <!-- /.admin-navigation__item -->
     </ul>

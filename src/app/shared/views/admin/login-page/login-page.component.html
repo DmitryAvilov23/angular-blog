@@ -1,5 +1,19 @@
-<form class="card form" [formGroup]="form" (ngSubmit)="submit()">
+<form
+  class="card form"
+  [formGroup]="form"
+  (ngSubmit)="signInWithEmailAndPassword()"
+>
   <h2>Login to admin panel</h2>
+
+  <div class="alert alert-danger" *ngIf="_authService.error$ | async as error">
+    {{ error }}
+  </div>
+  <!-- /.alert aler-danger -->
+
+  <div class="alert alert-info" *ngIf="notAuthMessage">
+    {{ notAuthMessage }}
+  </div>
+  <!-- /.alert aler-danger -->
 
   <div class="form-control form__control">
     <label>
@@ -24,13 +38,20 @@
   <div class="form-control form__control">
     <label>
       Password:
-      <input formControlName="password" type="email" />
+      <input formControlName="password" type="password" />
     </label>
     <div
       class="validation"
       *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
     >
-      <small>Error</small>
+      <small *ngIf="form.get('password')?.errors?.required"
+        >Enter your password</small
+      >
+      <small *ngIf="form.get('password')?.errors?.minlength"
+        >The password must be longer than
+        {{ requiredPasswordLength }} characters. Current password length is
+        {{ actualPasswordLength }} characters</small
+      >
     </div>
     <!-- /.validation -->
   </div>

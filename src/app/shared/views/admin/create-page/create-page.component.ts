@@ -26,20 +26,21 @@ export class CreatePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.createPostSubscr.unsubscribe();
+    if (this.createPostSubscr) this.createPostSubscr.unsubscribe();
   }
 
   createNewPost() {
     if (this.form.invalid) {
       return;
     }
-    console.log(1);
 
     const post = this.genereateNewPost();
 
-    this._postsService.createNewPost(post).subscribe(() => {
-      this.form.reset();
-    });
+    this.createPostSubscr = this._postsService
+      .createNewPost(post)
+      .subscribe(() => {
+        this.form.reset();
+      });
   }
 
   private genereateNewPost(): IPost {

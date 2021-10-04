@@ -1,6 +1,6 @@
 <div class="admin-table" *ngIf="posts.length; else loading" class="dashboard">
   <div class="form-control">
-    <input type="text" placeholder="Search post" />
+    <input type="text" placeholder="Search post" [(ngModel)]="searchRequest" />
   </div>
   <!-- /.form-control -->
   <table>
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let post of posts; index as i">
+      <tr *ngFor="let post of posts | searchPosts: searchRequest; index as i">
         <td>{{ i + 1 }}</td>
         <td>{{ post?.author }}</td>
         <td>{{ post?.title }}</td>

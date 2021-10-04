@@ -1,3 +1,4 @@
+import { SearchPostsPipe } from './../../pipes/search-posts.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -37,6 +38,7 @@ const adminChildrens = [
     CreatePageComponent,
     DashboardPageComponent,
     EditPageComponent,
+    SearchPostsPipe,
   ],
   imports: [
     CommonModule,

@@ -13,6 +13,8 @@ import { PostsService } from './../../../services/posts.service';
 export class DashboardPageComponent implements OnInit, OnDestroy {
   posts: IPost[] = [];
 
+  searchRequest = '';
+
   postsSubscr!: Subscription;
 
   constructor(private _postsService: PostsService) {}

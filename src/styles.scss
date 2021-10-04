@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
+@import url("~quill/dist/quill.core.css");
+@import url("~quill/dist/quill.snow.css");
+
 :root {
-  --primary-color: #dc3545;
+  --primary-color: #dc3545 !important;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;

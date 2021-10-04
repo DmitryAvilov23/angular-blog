@@ -8,11 +8,13 @@ import { environment } from './../../../environments/environment';
 
 import { ILoginData, IUser } from './../models/interfaces';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   public error$: Subject<string> = new Subject<string>();
 
-  private get token(): string | null {
+  get token(): string | null {
     const currentDate = new Date();
     const expDate = new Date(localStorage.getItem('fb-token-exp')!);
 

@@ -32,6 +32,8 @@ export class LoginPageComponent implements OnInit {
     this._activatedRoute.queryParams.subscribe((params: Params) => {
       if (params.isAuthorized) {
         this.notAuthMessage = 'Please log in';
+      } else if (params.authFailed) {
+        this.notAuthMessage = 'The session has expired. Re-enter the data';
       }
     });
 

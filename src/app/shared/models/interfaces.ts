@@ -13,3 +13,11 @@ export interface IUser {
   localId: string;
   registered: boolean;
 }
+
+export interface IPost {
+  id?: number;
+  title: string;
+  author: string;
+  content?: string;
+  date?: Date;
+}

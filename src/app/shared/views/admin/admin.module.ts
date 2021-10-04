@@ -52,6 +52,6 @@ const adminChildrens = [
     ]),
   ],
   exports: [RouterModule],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthGuard],
 })
 export class AdminModule {}

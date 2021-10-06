@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -40,7 +40,30 @@ export class PostsService {
     );
   }
 
-  deletePostById(id: string) {
-    return this._httpClient.delete(`${environment.serverUrl}/posts/${id}.json`);
+  deletePostById(id: string): Observable<void> {
+    return this._httpClient.delete<void>(
+      `${environment.serverUrl}/posts/${id}.json`
+    );
+  }
+
+  getPostById(id: string): Observable<IPost> {
+    return this._httpClient
+      .get<IPost>(`${environment.serverUrl}/posts/${id}.json`)
+      .pipe(
+        map((post: IPost) => {
+          return {
+            ...post,
+            id,
+            date: new Date(post?.date!),
+          };
+        })
+      );
+  }
+
+  updatePostById(post: IPost): Observable<IPost> {
+    return this._httpClient.patch<IPost>(
+      `${environment.serverUrl}/posts/${post.id}.json`,
+      post
+    );
   }
 }

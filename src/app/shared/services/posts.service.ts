@@ -39,4 +39,8 @@ export class PostsService {
       })
     );
   }
+
+  deletePostById(id: string) {
+    return this._httpClient.delete(`${environment.serverUrl}/posts/${id}.json`);
+  }
 }

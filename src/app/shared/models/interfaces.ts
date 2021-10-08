@@ -24,6 +24,8 @@ export interface IPost {
   date?: Date;
 }
 
+console.log(1);
+
 export interface IAlert {
   type: AlertTypes;
   text: string;

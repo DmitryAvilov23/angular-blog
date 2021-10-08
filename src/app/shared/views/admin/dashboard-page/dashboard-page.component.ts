@@ -1,10 +1,13 @@
-import { IPost } from './../../../models/interfaces';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
 import { PostsService } from './../../../services/posts.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
+import { IPost } from './../../../models/interfaces';
+
+import { AlertTypes } from 'src/app/shared/models/enums';
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
@@ -18,7 +21,10 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   postsSubscr!: Subscription;
   deleteSubscr!: Subscription;
 
-  constructor(private _postsService: PostsService) {}
+  constructor(
+    private _postsService: PostsService,
+    private _alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.postsSubscr = this._postsService.getAllPosts().subscribe((posts) => {
@@ -37,6 +43,11 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       );
 
       this.posts.splice(postIdToDelete, 1);
+
+      this._alertService.callAlertMessage(
+        AlertTypes.WARNING,
+        'Post was deleted'
+      );
     });
   }
 

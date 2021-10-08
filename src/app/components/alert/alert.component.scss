@@ -1,0 +1,25 @@
+.alert-wrap {
+  position: fixed;
+  top: 70px;
+  right: 40px;
+  display: none;
+  padding: 0 10px;
+  z-index: 10;
+  max-width: 200px;
+}
+
+.alert {
+  &-success {
+    display: block;
+  }
+
+  &-warning {
+    display: block;
+    background: rgba(255, 255, 0, 0.644);
+  }
+
+  &-danger {
+    display: block;
+    background: rgba(255, 0, 0, 0.623);
+  }
+}

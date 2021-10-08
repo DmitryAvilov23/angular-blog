@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 
 import { PostsService } from './../../../services/posts.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 import { IPost } from './../../../models/interfaces';
+import { AlertTypes } from 'src/app/shared/models/enums';
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
@@ -22,7 +23,8 @@ export class EditPageComponent implements OnInit {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _postsService: PostsService
+    private _postsService: PostsService,
+    private _alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +43,10 @@ export class EditPageComponent implements OnInit {
       .pipe(take(1))
       .subscribe(() => {
         this.isFormSubmitted = true;
+        this._alertService.callAlertMessage(
+          AlertTypes.SUCCESS,
+          'Post was updated!'
+        );
       });
   }
 

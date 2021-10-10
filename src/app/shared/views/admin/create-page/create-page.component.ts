@@ -4,11 +4,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { PostsService } from './../../../services/posts.service';
-import { AlertService } from './../../../services/alert.service';
+import { AlertService } from '../shared/services/alert.service';
 
 import { IPost } from './../../../models/interfaces';
 
-import { AlertTypes } from 'src/app/shared/models/enums';
+import { AlertTypes } from './../shared/models/enums';
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',

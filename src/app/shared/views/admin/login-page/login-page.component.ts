@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from './../../../services/auth.service';
+import { AuthService } from '../shared/services/auth.service';
 
-import { ILoginData } from './../../../models/interfaces';
+import { ILoginData } from './../shared/models/interfaces';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',

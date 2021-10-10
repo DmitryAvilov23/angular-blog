@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { AuthService } from './../services/auth.service';
+import { AuthService } from '../views/admin/shared/services/auth.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private _authService: AuthService, private _router: Router) {}

@@ -2,10 +2,9 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
-import { AlertService } from './../../shared/services/alert.service';
+import { AlertService } from '../../services/alert.service';
 
-import { AlertTypes } from 'src/app/shared/models/enums';
-
+import { AlertTypes } from '../../models/enums';
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',

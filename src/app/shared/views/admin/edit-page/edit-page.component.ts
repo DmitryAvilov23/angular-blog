@@ -5,10 +5,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { switchMap, take } from 'rxjs/operators';
 
 import { PostsService } from './../../../services/posts.service';
-import { AlertService } from 'src/app/shared/services/alert.service';
+import { AlertService } from '../shared/services/alert.service';
 
 import { IPost } from './../../../models/interfaces';
-import { AlertTypes } from 'src/app/shared/models/enums';
+
+import { AlertTypes } from './../shared/models/enums';
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',

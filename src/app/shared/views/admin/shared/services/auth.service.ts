@@ -4,10 +4,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { environment } from './../../../environments/environment';
+import { environment } from '../../../../../../environments/environment';
 
-import { ILoginData, IUser } from './../models/interfaces';
-
+import { ILoginData, IUser } from '../models/interfaces';
 @Injectable({
   providedIn: 'root',
 })

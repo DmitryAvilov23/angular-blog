@@ -1,33 +1,24 @@
-<div class="post">
+<div class="post" *ngIf="postData$ | async as postData; else loading">
   <div class="header post__header">
-    <h2 class="post__title">Post title</h2>
+    <h2 class="post__title">{{ postData?.title }}</h2>
 
-    <div class="btn btn-link" routerLink="/">На главную</div>
+    <button class="btn btn-link" routerLink="/">To main page</button>
   </div>
   <!-- /.header -->
   <div class="info post__info">
-    <strong class="info__author">Тут автор</strong>
-    <small class="info__date">12.09.2019</small>
+    <strong class="info__author">{{ postData?.author }}</strong>
+    <small class="info__date">{{
+      postData?.date | date: "medium":"":"en"
+    }}</small>
   </div>
   <!-- /.info -->
   <div class="post__content">
-    <p class="post__text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto fugit,
-      nihil et ut inventore quod quos eligendi deleniti quibusdam officiis.
-    </p>
-    <p class="post__text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto fugit,
-      nihil et ut inventore quod quos eligendi deleniti quibusdam officiis.
-    </p>
-    <p class="post__text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto fugit,
-      nihil et ut inventore quod quos eligendi deleniti quibusdam officiis.
-    </p>
-    <p class="post__text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto fugit,
-      nihil et ut inventore quod quos eligendi deleniti quibusdam officiis.
-    </p>
+    <quill-view-html [content]="postData?.content!"></quill-view-html>
   </div>
   <!-- /.post__content -->
 </div>
 <!-- /.post -->
+
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>

@@ -1,4 +1,4 @@
-import { IPost } from '../models/interfaces';
+import { IPost } from '../../../../models/interfaces';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

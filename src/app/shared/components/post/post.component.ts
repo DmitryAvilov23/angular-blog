@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { IPost } from './../../models/interfaces';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
+  @Input() postData!: IPost;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
